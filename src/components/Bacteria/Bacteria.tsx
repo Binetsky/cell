@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export const Bacteria = ():React.ReactElement => {
-  const movement = (ev: React.MouseEvent<HTMLDivElement, MouseEvent>, bodyName: string) => {
+  const movement = (bodyName: string) => {
     const body = document.getElementById(bodyName);
 
     if (!body) return null;
@@ -20,17 +20,30 @@ export const Bacteria = ():React.ReactElement => {
     }
 
     const newPos = {
-      x: prevPos.x ? `${direction.x ? prevPos.x + move.x : prevPos.x - move.x}px` : `${document.documentElement.clientWidth / 2 + move.x}px`,
-      y: prevPos.y ? `${direction.y ? prevPos.y + move.y : prevPos.y - move.y}px` : `${document.documentElement.clientHeight / 2 + move.y}px`,
+      x: prevPos.x ? direction.x ? prevPos.x + move.x : prevPos.x - move.x : document.documentElement.clientWidth / 2 + move.x,
+      y: prevPos.y ? direction.y ? prevPos.y + move.y : prevPos.y - move.y : document.documentElement.clientHeight / 2 + move.y,
     }
 
-    document!.getElementById(bodyName)!.style.top = newPos.y;
-    document!.getElementById(bodyName)!.style.left = newPos.x;
+    const shouldKillBacteria = newPos.x < 10
+        || newPos.y < 10
+        || newPos.x > document.documentElement.clientWidth - 10
+        || newPos.y > document.documentElement.clientHeight - 10;
 
-    setTimeout(() => movement(ev, bodyName), 300);
+    document!.getElementById(bodyName)!.style.top = newPos.y + 'px';
+    document!.getElementById(bodyName)!.style.left = newPos.x + 'px';
+
+    if (shouldKillBacteria) {
+      document!.getElementById(bodyName)!.style.opacity = '0';
+      setTimeout(() => {
+        document!.getElementById(bodyName)!.style.display = 'none';
+        return null;
+      }, 300);
+    }
+
+    setTimeout(() => movement(bodyName), 300);
   }
 
-  return (<div id="bacteria" className="bacteria rotating resizing" onClick={(ev) => movement(ev, 'bacteria')} />);
+  return (<div id="bacteria" className="bacteria rotating resizing" onClick={(ev) => movement('bacteria')} />);
 };
 
 Bacteria.displayName = 'Bacteria';
