@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "module": "esnext",
+    "sourceMap": true,
+    "strict": true,
+    "target": "esnext",
+    "noImplicitAny": true,
+    "jsx": "react",
+    "listEmittedFiles": false,
+    "alwaysStrict": true,
+    "incremental": false,
+    "skipLibCheck": true,
+    "checkJs": false,
+    "lib": ["dom", "esnext"],
+    "typeRoots": [
+      "types",
+      "node_modules/@types"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@styles/*": [
+        "src/scss"
+      ]
+    },
+    "noEmit": false,
+    "newLine": "LF"
+  },
+  "exclude": [
+    "node_modules",
+    "dist/",
+    "cypress",
+    "public"
+  ],
+  "include": [
+    "src"
+  ]
+}

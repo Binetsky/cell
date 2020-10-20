@@ -1,0 +1,37 @@
+@for $i from 0 through 32 {
+  @if $i % 4 == 0 {
+    .padding-#{$i} {
+      padding: 0.1rem * $i;
+    }
+  }
+}
+
+@for $y from 0 through 32 {
+  @if $y % 4 == 0 {
+    .padding-x-#{$y} {
+      padding-right: 0.1rem * $y;
+      padding-left: 0.1rem * $y;
+    }
+    .padding-y-#{$y} {
+      padding-top: 0.1rem * $y;
+      padding-bottom: 0.1rem * $y;
+    }
+  }
+}
+
+@for $j from 0 through 32 {
+  @if $j % 4 == 0 {
+    .padding-top-#{$j} {
+      padding-top: 0.1rem * $j;
+    }
+    .padding-right-#{$j} {
+      padding-right: 0.1rem * $j;
+    }
+    .padding-bottom-#{$j} {
+      padding-bottom: 0.1rem * $j;
+    }
+    .padding-left-#{$j} {
+      padding-left: 0.1rem * $j;
+    }
+  }
+}
