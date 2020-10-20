@@ -8,6 +8,7 @@
   border-radius: 50%;
   box-shadow: inset .0rem .0rem .3rem $bacteria-capsule;
   background-color: $white;
+  transition: .5s;
   &:before {
     content: ' ';
     position: absolute;
