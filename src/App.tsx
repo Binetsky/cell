@@ -3,7 +3,7 @@ import svg4everybody from 'svg4everybody';
 
 import '@styles/app.scss';
 
-export const App = () => {
+export const App = (): React.ReactElement => {
   React.useEffect(() => {
     svg4everybody({ polyfill: true });
   }, []);
