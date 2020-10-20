@@ -9,8 +9,8 @@ export const App = () => {
   }, []);
 
   return (
-    <div className="padding-left-8">
-      <h1>Application is working</h1>
+    <div className="petri-cup" id="petri-cup">
+      <div className="bacteria rotating resizing" />
     </div>
   );
 };
