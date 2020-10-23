@@ -6,9 +6,11 @@ import '@styles/app.scss';
 
 export const App = (): React.ReactElement => {
   const [cellList, setCellList] = React.useState<string[]>(['bacteria', 'bacteria', 'bacteria', 'bacteria', 'bacteria']);
+  const [cursorPosition, setCursorPosition] = React.useState({ x: 0, y: 0 });
 
-  const createCell = () => {
+  const createCell = (event: React.MouseEvent<HTMLDivElement>) => {
     setCellList([...cellList, 'bacteria']);
+    setCursorPosition({ x: event.clientX, y: event.clientY });
   };
 
   React.useEffect(() => {
@@ -16,8 +18,8 @@ export const App = (): React.ReactElement => {
   }, []);
 
   return (
-    <div className="petri-cup" id="petri-cup" onClick={() => createCell()}>
-      {cellList.map((item, index) => (<Bacteria id={index} itemName={item} key={index.toString()} />))}
+    <div className="petri-cup" id="petri-cup" onClick={(event) => createCell(event)}>
+      {cellList.map((item, index) => (<Bacteria id={index} itemName={item} cursorPosition={cursorPosition} key={index.toString()} />))}
     </div>
   );
 };
