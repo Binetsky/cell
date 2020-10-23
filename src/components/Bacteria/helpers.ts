@@ -31,12 +31,12 @@ export const movement = (bodyName: string, cursorPosition: { x: number, y: numbe
 
   const shouldKillBacteria = newPos.x < 10
       || newPos.y < 10
-      || newPos.x > document.documentElement.clientWidth - 30
-      || newPos.y > document.documentElement.clientHeight - 30;
+      || newPos.x > document.documentElement.clientWidth - 60
+      || newPos.y > document.documentElement.clientHeight - 60;
 
   document.getElementById(bodyName)!.style.top = `${newPos.y}px`;
   document.getElementById(bodyName)!.style.left = `${newPos.x}px`;
-  document.getElementById(bodyName)!.style.zIndex = '1';
+  document.getElementById(bodyName)!.style.opacity = '1';
 
   if (shouldKillBacteria) {
     document.getElementById(bodyName)!.style.opacity = '0';
