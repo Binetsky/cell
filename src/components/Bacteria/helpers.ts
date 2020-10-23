@@ -1,3 +1,16 @@
+/* Функция отвечает за прерывание жизненного цикла бактерии
+ *
+ * bodyName - id бактерии
+ */
+const stopLife = (bodyName: string) => {
+  document.getElementById(bodyName)!.style.opacity = '0';
+  setTimeout(() => {
+    document.getElementById(bodyName)!.style.display = 'none';
+    document.getElementById(bodyName)!.remove();
+    return null;
+  }, 300);
+};
+
 /* Функция отвечает за перемещение и ограничение области передвижения
  *
  * bodyName - id бактерии
@@ -38,14 +51,7 @@ export const movement = (bodyName: string, cursorPosition: { x: number, y: numbe
   document.getElementById(bodyName)!.style.left = `${newPos.x}px`;
   document.getElementById(bodyName)!.style.opacity = '1';
 
-  if (shouldKillBacteria) {
-    document.getElementById(bodyName)!.style.opacity = '0';
-    setTimeout(() => {
-      document.getElementById(bodyName)!.style.display = 'none';
-      document.getElementById(bodyName)!.remove();
-      return null;
-    }, 300);
-  }
+  if (shouldKillBacteria) stopLife(bodyName);
 
   setTimeout(() => movement(bodyName, cursorPosition), 300);
 };
