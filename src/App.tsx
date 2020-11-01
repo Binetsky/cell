@@ -5,7 +5,7 @@ import { Bacteria } from './components';
 import '@styles/app.scss';
 
 export const App = (): React.ReactElement => {
-  const [cellList, setCellList] = React.useState<string[]>(['bacteria', 'bacteria', 'bacteria', 'bacteria', 'bacteria']);
+  const [cellList, setCellList] = React.useState<string[]>([]);
   const [cursorPosition, setCursorPosition] = React.useState({ x: 0, y: 0 });
 
   const createCell = (event: React.MouseEvent<HTMLDivElement>) => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { movement } from './helpers';
+import { movement, stopLife } from './helpers';
 
 export interface BacteriaProps {
   id: number,
@@ -9,6 +9,10 @@ export interface BacteriaProps {
 
 export const Bacteria = (props: BacteriaProps):React.ReactElement => {
   const { id, itemName, cursorPosition } = props;
+
+  React.useEffect(() => {
+    setInterval(() => stopLife(`${itemName}-${id}`), 30000);
+  }, [id, itemName]);
 
   return (
     <div
