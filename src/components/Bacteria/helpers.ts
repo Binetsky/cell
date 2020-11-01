@@ -2,7 +2,7 @@
  *
  * bodyName - id бактерии
  */
-const stopLife = (bodyName: string) => {
+export const stopLife = (bodyName: string) => {
   document.getElementById(bodyName)!.style.opacity = '0';
   setTimeout(() => {
     document.getElementById(bodyName)!.style.display = 'none';
